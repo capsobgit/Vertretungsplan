@@ -19,7 +19,7 @@ import client.model.Model;
  * Programm zur Ausgestaltung der Menubar des Hauptfensters Enthält eine eigene
  * Ereignisbehandlung
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 @SuppressWarnings("serial")
 public class MenuView extends JMenuBar

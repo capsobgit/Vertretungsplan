@@ -11,15 +11,23 @@ import javax.swing.JTextField;
  * Liest Text aus Benutzereingabe und lässt diesen in die Klassenliste-Datei
  * schreiben
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 import client.model.Model;
 
+/**
+ *
+ * @author sobdaro
+ */
 public class KlassenListeController implements ActionListener
 {
 
     private Model model;
 
+    /**
+     *
+     * @param model
+     */
     public KlassenListeController(Model model)
     {
         this.model = model;

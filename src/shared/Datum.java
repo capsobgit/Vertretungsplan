@@ -7,7 +7,7 @@ import java.util.Locale;
 /**
  * Kapslung der Datumsformattierung
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class Datum
 {

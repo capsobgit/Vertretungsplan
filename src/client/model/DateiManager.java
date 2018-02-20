@@ -1,7 +1,6 @@
 package client.model;
 
 import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
 import java.io.*;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -13,8 +12,7 @@ import shared.CellData;
  * IO-Operationen könnten in einer Methode vereinigt werden (Muss noch geändert
  * werden, sowie auch die Leseoperationen verlagert werden müssen)
  *
- * @author Bruno Sobral
- * @version 1.2
+ * @author sobdaro
  */
 public class DateiManager
 {
@@ -26,6 +24,9 @@ public class DateiManager
     private final String FAECHER_LISTE = Bezeichnungen.Faecherkuerzel.getName();
     private Datei datei;
 
+    /**
+     *
+     */
     public DateiManager()
     {
         //Dateien werden erzeugt falls sie noch nicht existieren.
@@ -89,16 +90,10 @@ public class DateiManager
      *
      * @param obj
      */
-    public void writeTabelle(CellData[][] obj)
+    public void writeTabelle(CellData[][] data)
     {
-
-        try (XMLEncoder enc = new XMLEncoder(new FileOutputStream(TABELLEN_DATEN)))
-        {
-            enc.writeObject(obj);
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
+        datei = new XMLDatei(TABELLEN_DATEN);
+        datei.write(data);
     }
 
     /**

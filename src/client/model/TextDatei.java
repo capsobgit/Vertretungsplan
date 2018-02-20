@@ -4,13 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * @author Bruno Sobral
- * @date 17.02.2018
- * @version 1.0
+ * @author sobdaro
  */
-public class TextDatei extends Datei
+public class TextDatei extends Datei<String>
 {
 
+    /**
+     *
+     * @param name
+     */
     public TextDatei(String name)
     {
         super(name);

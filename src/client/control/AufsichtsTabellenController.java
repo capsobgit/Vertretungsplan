@@ -8,21 +8,21 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import server.ServerTableModel;
+import server.IServerTableModel;
 
 /**
  * Registriert auf Änderungen in der Aufsichtstabelle im Client
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class AufsichtsTabellenController implements TableModelListener
 {
 
-    private ServerTableModel remote;
+    private IServerTableModel remote;
     private JTable table;
     private String[] header;
 
-    public AufsichtsTabellenController(ServerTableModel remote, JTable table,
+    public AufsichtsTabellenController(IServerTableModel remote, JTable table,
             String[] header)
     {
         this.remote = remote;

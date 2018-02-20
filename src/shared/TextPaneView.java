@@ -13,7 +13,7 @@ import javax.swing.text.StyledDocument;
  * Objekte davon werden weitergeleitet um dann von der Tabelle gerendert zu 
  * werden.
  * 
- * @author Bruno Sobral
+ * @author sobdaro
  */
 @SuppressWarnings("serial")
 public class TextPaneView extends JTextPane

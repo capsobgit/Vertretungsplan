@@ -9,7 +9,7 @@ import javax.swing.event.ChangeListener;
 /**
  * Diese Klasse regelt die Sichtbarkeit der Buttons inerhalb des TabbedPanes
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class TabController implements ChangeListener
 {
@@ -17,6 +17,13 @@ public class TabController implements ChangeListener
     private JButton b1, b2;
     private JLabel l1, l2;
 
+    /**
+     *
+     * @param b1
+     * @param b2
+     * @param l1
+     * @param l2
+     */
     public TabController(JButton b1, JButton b2, JLabel l1, JLabel l2)
     {
         this.b1 = b1;

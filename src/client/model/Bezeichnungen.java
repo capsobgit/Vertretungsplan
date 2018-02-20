@@ -3,9 +3,8 @@ package client.model;
 /**
  * Diese Enum-Klasse hält alle Bezeichnungen der Kontroll-Elemente als auch der
  * Dateinamen
- *
- * @version 1.0
- * @author Bruno Sobral
+ * 
+ * @author sobdaro
  */
 public enum Bezeichnungen
 {

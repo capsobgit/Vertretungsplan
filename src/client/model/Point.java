@@ -8,22 +8,35 @@ package client.model;
 public class Point
 {
 
-    private int eventRow;
-    private int eventCol;
+    private int eventTableRow;
+    private int eventTableCol;
 
+    /**
+     *
+     * @param eventRow
+     * @param eventCol
+     */
     public Point(int eventRow, int eventCol)
     {
-        this.eventRow = eventRow;
-        this.eventCol = eventCol;
+        this.eventTableRow = eventRow;
+        this.eventTableCol = eventCol;
     }
 
-    public int getEventRow()
+    /**
+     *
+     * @return eventTableRow
+     */
+    public int getEventTableRow()
     {
-        return eventRow;
+        return eventTableRow;
     }
 
-    public int getEventCol()
+    /**
+     *
+     * @return eventTableCol
+     */
+    public int getEventTableCol()
     {
-        return eventCol;
+        return eventTableCol;
     }
 }

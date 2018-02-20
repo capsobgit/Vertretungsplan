@@ -7,7 +7,7 @@ import shared.CellData;
 /**
  * Modellklasse mit Beobachtern
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class Model
 {
@@ -17,7 +17,7 @@ public class Model
     private ArrayList<String> klassenHeader;
     private ArrayList<String> lehrerKrzl;
     private ArrayList<String> faecher;
-    private ArrayList<ModelListener> modelListeners;
+    private ArrayList<IModelListener> modelListeners;
     private DateiManager manager;
     private static final int STUNDEN_TAG = 9;
 
@@ -37,7 +37,7 @@ public class Model
      *
      * @param listener
      */
-    public void addModelListener(ModelListener listener)
+    public void addModelListener(IModelListener listener)
     {
         this.modelListeners.add(listener);
         fireModelChanged();
@@ -58,11 +58,20 @@ public class Model
         fireModelChanged();
     }
 
-    public void removeModelListener(ModelListener listener)
+    /**
+     *
+     * @param listener
+     */
+    public void removeModelListener(IModelListener listener)
     {
         modelListeners.remove(listener);
     }
 
+    /**
+     *
+     * @param arg
+     * @return {datamatrixHeute|datamatrixMorgen}
+     */
     public CellData[][] getDataMatrix(int arg)
     {
         // Das ist Gift!!
@@ -75,7 +84,10 @@ public class Model
         }
     }
 
-    // Hier wird ein Tabellenmodell in die Matrix aufgenommen
+    /**
+     * Hier wird ein Tabellenmodell in die Matrix aufgenommen
+     * @param m
+     */
     public void setDataMatrix(TableModel m)
     {
         for (int i = 0; i < STUNDEN_TAG; i++)
@@ -87,56 +99,103 @@ public class Model
         }
     }
 
+    /**
+     *
+     * @return dataMatrixHeute
+     */
     public CellData[][] getDataMatrix1()
     {
         return dataMatrixHeute;
     }
 
+    /**
+     *
+     * @param dataMatrix1
+     */
     public void setDataMatrix1(CellData[][] dataMatrix1)
     {
         this.dataMatrixHeute = dataMatrix1;
     }
 
+    /**
+     *
+     * @return dataMatrixMorgen
+     */
     public CellData[][] getDataMatrix2()
     {
         return dataMatrixMorgen;
     }
 
+    /**
+     *
+     * @param dataMatrix2
+     */
     public void setDataMatrix2(CellData[][] dataMatrix2)
     {
         this.dataMatrixMorgen = dataMatrix2;
     }
 
-    public ArrayList<ModelListener> getModelListeners()
+    /**
+     *
+     * @return modelListeners
+     */
+    public ArrayList<IModelListener> getModelListeners()
     {
         return modelListeners;
     }
 
-    public void setModelListeners(ArrayList<ModelListener> modelListeners)
+    /**
+     *
+     * @param modelListeners
+     */
+    public void setModelListeners(ArrayList<IModelListener> modelListeners)
     {
         this.modelListeners = modelListeners;
     }
 
+    /**
+     *
+     * @return manager
+     */
     public DateiManager getManager()
     {
         return manager;
     }
 
+    /**
+     *
+     * @param manager
+     */
     public void setManager(DateiManager manager)
     {
         this.manager = manager;
     }
 
+    /**
+     *
+     * @return STUNDEN_TAG
+     */
     public static int getStundenTag()
     {
         return STUNDEN_TAG;
     }
 
+    /**
+     *
+     * @param faecher
+     */
     public void setFaecher(ArrayList<String> faecher)
     {
         this.faecher = faecher;
     }
 
+    /**
+     *
+     * @param data
+     * @param row
+     * @param col
+     * @param arg
+     */
     public void insertData(CellData data, int row, int col, int arg)
     {
         if (arg == 1)
@@ -149,32 +208,56 @@ public class Model
         fireModelChanged();
     }
 
+    /**
+     *
+     * @return faecher
+     */
     public ArrayList<String> getFaecher()
     {
         return faecher;
     }
 
+    /**
+     *
+     * @return klassenHeader
+     */
     public ArrayList<String> getKlassenHeader()
     {
         return klassenHeader;
     }
 
+    /**
+     *
+     * @param klassenHeader
+     */
     public void setKlassenHeader(ArrayList<String> klassenHeader)
     {
         this.klassenHeader = klassenHeader;
         fireModelChanged();
     }
 
+    /**
+     *
+     * @return lehrerKrzl
+     */
     public ArrayList<String> getLehrerKrzl()
     {
         return lehrerKrzl;
     }
 
+    /**
+     *
+     * @param lehrerKrzl
+     */
     public void setLehrerKrzl(ArrayList<String> lehrerKrzl)
     {
         this.lehrerKrzl = lehrerKrzl;
     }
 
+    /**
+     *
+     * @param krzl
+     */
     public void writeToKrzlFile(String krzl)
     {
         manager.writeLehrerListe(krzl);
@@ -183,6 +266,10 @@ public class Model
         fireModelChanged();
     }
 
+    /**
+     *
+     * @param fach
+     */
     public void writeToFaecherFile(String fach)
     {
         manager.writeFaecherListe(fach);
@@ -191,6 +278,10 @@ public class Model
         fireModelChanged();
     }
 
+    /**
+     *
+     * @param klasse
+     */
     public void writeToKlassenFile(String klasse)
     {
         manager.writeKlassenListe(klasse);
@@ -200,6 +291,10 @@ public class Model
         fireModelChanged();
     }
 
+    /**
+     *
+     * @param item
+     */
     public void removeFromKrzlFile(String item)
     {
         manager.deleteElementFrom(item,
@@ -208,6 +303,10 @@ public class Model
         fireModelChanged();
     }
 
+    /**
+     *
+     * @param item
+     */
     public void removeFromKlassenFile(String item)
     {
         manager.deleteElementFrom(item,
@@ -216,6 +315,10 @@ public class Model
         fireModelChanged();
     }
 
+    /**
+     *
+     * @param item
+     */
     public void removeFromFaecherFile(String item)
     {
         manager.deleteElementFrom(item,
@@ -226,7 +329,8 @@ public class Model
 
     /**
      * Liest DefaultTableModel aus Datei
-     * @param day 
+     *
+     * @param day
      */
     public void initTabellenModel(int day)
     {
@@ -253,7 +357,7 @@ public class Model
      */
     private void fireModelChanged()
     {
-        for (ModelListener list : modelListeners)
+        for (IModelListener list : modelListeners)
         {
             list.modelChanged(this);
         }

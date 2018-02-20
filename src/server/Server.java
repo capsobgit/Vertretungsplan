@@ -10,8 +10,8 @@ import shared.Datum;
 
 /**
  * RMI-Server lädt Stundenplan-Tabellen in die Registry
- *
- * @author Bruno Sobral
+ * 
+ * @author sobdaro
  */
 @SuppressWarnings("serial")
 public class Server extends JFrame
@@ -21,6 +21,13 @@ public class Server extends JFrame
     final static private String tabelle2 = "ServerTableMorgen";
     final static private String tabelle3 = "Aufsicht";
 
+    /**
+     *
+     * @param name
+     * @param servertableH
+     * @param servertableM
+     * @param aufview
+     */
     public Server(String name, ServerStundenTabelleView servertableH,
             ServerStundenTabelleView servertableM, ServerAufsichtsTabellenView aufview
     /*, ServerAufsichtsTabellenView aufsMorgen*/)
@@ -61,6 +68,10 @@ public class Server extends JFrame
         setVisible(true);
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args)
     {
         // System.setSecurityManager(new RMISecurityManager());

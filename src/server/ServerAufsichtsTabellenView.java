@@ -8,7 +8,7 @@ import shared.SmallRenderer;
 /**
  * Eine View für die Aufsichtstabelle.
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 @SuppressWarnings("serial")
 public class ServerAufsichtsTabellenView extends JTable

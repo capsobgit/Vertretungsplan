@@ -2,15 +2,18 @@ package client.model;
 
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
+import shared.CellData;
 
 /**
- * @author Bruno Sobral
- * @date 17.02.2018
- * @version 1.0
+ * @author sobdaro
  */
-public class XMLDatei extends Datei
+public class XMLDatei extends Datei<CellData[][]>
 {
 
+    /**
+     *
+     * @param name
+     */
     public XMLDatei(String name)
     {
         super(name);
@@ -22,9 +25,9 @@ public class XMLDatei extends Datei
      * @param param
      */
     @Override
-    public void write(String param)
+    public void write(CellData[][] param)
     {
-        try (XMLEncoder enc = new XMLEncoder(new FileOutputStream(param)))
+        try (XMLEncoder enc = new XMLEncoder(new FileOutputStream(this.name)))
         {
             enc.writeObject(param);
 

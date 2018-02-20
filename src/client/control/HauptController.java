@@ -14,13 +14,13 @@ import client.model.Model;
 import client.model.Point;
 import client.view.StundenTabelleView;
 import java.rmi.RemoteException;
-import server.ServerTableModel;
 import shared.CellData;
+import server.IServerTableModel;
 
 /**
  * Registriert Events am Hauptfenster
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class HauptController implements ActionListener
 {
@@ -34,11 +34,11 @@ public class HauptController implements ActionListener
     boolean manuel;
     boolean plusstunde;
     private JTextField field;
-    private ServerTableModel remote;
+    private IServerTableModel remote;
 
     public HauptController(Model model, Point point,
             StundenTabelleView table, String[] comboNames,
-            ServerTableModel remote)
+            IServerTableModel remote)
     {
         this.model = model;
         this.point = point;
@@ -82,7 +82,7 @@ public class HauptController implements ActionListener
                 if (manuel)
                 {
                     CellData data = new CellData(false, "", "", manuelText, true);
-                    model.insertData(data, point.getEventRow(), point.getEventCol(),
+                    model.insertData(data, point.getEventTableRow(), point.getEventTableCol(),
                             table.getTag());
                     manuel = false;
                     field.setBackground(Color.white);
@@ -90,7 +90,7 @@ public class HauptController implements ActionListener
                 } else
                 {
                     CellData data = new CellData(plusstunde, krank, fach, vertr, false);
-                    model.insertData(data, point.getEventRow(), point.getEventCol(),
+                    model.insertData(data, point.getEventTableRow(), point.getEventTableCol(),
                             table.getTag());
                 }
             }

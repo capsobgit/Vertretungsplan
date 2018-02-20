@@ -4,9 +4,9 @@ package client.model;
  * Schnittstelle welche von den ViewKomponenten implementiert werden. Diese
  * bekommen dadurch eine Referenz auf das Model
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
-public interface ModelListener
+public interface IModelListener
 {
 
     public void modelChanged(Model model);

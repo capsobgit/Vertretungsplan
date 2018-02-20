@@ -5,13 +5,12 @@ import java.io.Serializable;
 /**
  * Diese Klasse repräsentiert die Daten einer einzelnen Tabellenzelle
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
+@SuppressWarnings("serial")
 public class CellData implements Serializable
 {
-
-    private static final long serialVersionUID = -7926718855150514421L;
-
+    
     private boolean plusStunde;
     private boolean isEmpty;
     private String fehlend, ersatz, fach;
@@ -82,10 +81,5 @@ public class CellData implements Serializable
     public void setFach(String fach)
     {
         this.fach = fach;
-    }
-
-    public static long getSerialversionuid()
-    {
-        return serialVersionUID;
     }
 }

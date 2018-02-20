@@ -8,10 +8,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 /**
  * 
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class ServerTableModelImpl extends UnicastRemoteObject
-        implements ServerTableModel
+        implements IServerTableModel
 {
 
     private static final long serialVersionUID = -6757255501131875906L;

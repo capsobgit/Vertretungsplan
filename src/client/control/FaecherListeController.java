@@ -12,7 +12,7 @@ import client.model.Model;
  * Registriert das Hinzufuegen und entnehmen von Faecherkuerzeln im Menu
  * Subfenster
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 public class FaecherListeController implements ActionListener
 {

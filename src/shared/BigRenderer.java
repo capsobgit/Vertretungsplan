@@ -8,10 +8,10 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  * Renderer für Haupttabelle
- * (kompliziert ..)
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
+@SuppressWarnings("serial")
 public class BigRenderer implements TableCellRenderer
 {
 

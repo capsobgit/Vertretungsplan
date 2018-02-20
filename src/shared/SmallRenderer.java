@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  * 
- * @author Bruno Sobral
+ * @author sobdaro
  */
 
 @SuppressWarnings("serial")

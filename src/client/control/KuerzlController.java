@@ -9,14 +9,18 @@ import javax.swing.JTextField;
 import client.model.Model;
 
 /**
+ * @author sobdaro
  * @see KlassenlisteController
- * @author Bruno Sobral
  */
 public class KuerzlController implements ActionListener
 {
 
     private Model model;
 
+    /**
+     *
+     * @param model
+     */
     public KuerzlController(Model model)
     {
         this.model = model;

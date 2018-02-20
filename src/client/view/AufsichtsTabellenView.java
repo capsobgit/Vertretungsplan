@@ -13,11 +13,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import server.ServerTableModel;
 import shared.SmallRenderer;
 import client.control.AufsichtsTabellenController;
 import client.model.Model;
-import client.model.ModelListener;
+import server.IServerTableModel;
+import client.model.IModelListener;
 
 /**
  * Eine View für die Aufsichtstabelle.
@@ -25,14 +25,14 @@ import client.model.ModelListener;
  * @author sobdaro
  */
 
-public class AufsichtsTabellenView extends JTable implements ModelListener, Serializable
+public class AufsichtsTabellenView extends JTable implements IModelListener, Serializable
 {
 
     private static final long serialVersionUID = -1593873850009952750L;
     private ArrayList<String> kürzel;
     private JComboBox<Object> combo;
 
-    public AufsichtsTabellenView(ArrayList<String> list, ServerTableModel remote,
+    public AufsichtsTabellenView(ArrayList<String> list, IServerTableModel remote,
             final Dimension dim)
     {
         setDefaultRenderer(Object.class, new SmallRenderer());

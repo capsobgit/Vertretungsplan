@@ -9,13 +9,13 @@ import java.awt.event.MouseEvent;
 import java.rmi.Naming;
 import javax.swing.*;
 
-import server.ServerTableModel;
 import shared.Datum;
 import client.control.TabController;
 import client.control.HauptController;
 import client.model.Bezeichnungen;
 import client.model.Model;
 import client.model.Point;
+import server.IServerTableModel;
 
 /**
  * Hauptprogramm zum Starten des RMI-Clients
@@ -23,11 +23,13 @@ import client.model.Point;
  * sich beim anklicken einer Tabellen-Zelle, außer
  * bei denen, welche in der ersten Spalte liegen.
  * Der entsprechende MouseListener ist hier realisiert.
- * @author Bruno Sobral
+ * 
+ * @author sobdaro
  */
 @SuppressWarnings("serial")
 public class Mainframe extends JFrame
 {
+    
     public Mainframe()
     {
         super("Vertretungsplan");
@@ -38,7 +40,7 @@ public class Mainframe extends JFrame
         //Modell
         final Model model = new Model();
         //RMI-Objekte
-        final ServerTableModel[] rmi = getRMI();
+        final IServerTableModel[] rmi = getRMI();
         //GuiKomponenten
         final StundenTabelleView stundenTabelle1
                 = new StundenTabelleView(dim, 1);
@@ -149,19 +151,19 @@ public class Mainframe extends JFrame
         setVisible(true);
     }
     //Entfernte Objekte allokieren 
-    private ServerTableModel[] getRMI()
+    private IServerTableModel[] getRMI()
     {
-        ServerTableModel[] stundenModel = new ServerTableModel[3];
+        IServerTableModel[] stundenModel = new IServerTableModel[3];
         try
         {
             stundenModel[0]
-                    = (ServerTableModel) Naming.lookup(
+                    = (IServerTableModel) Naming.lookup(
                             "rmi://localhost" + "/ServerTableHeute");
             stundenModel[1]
-                    = (ServerTableModel) Naming.lookup(
+                    = (IServerTableModel) Naming.lookup(
                             "rmi://localhost" + "/ServerTableMorgen");
             stundenModel[2]
-                    = (ServerTableModel) Naming.lookup(
+                    = (IServerTableModel) Naming.lookup(
                             "rmi://localhost" + "/Aufsicht");
             System.out.println("Server erreicht und Objekte erhalten..[]");
         } catch (Exception e)
@@ -174,6 +176,10 @@ public class Mainframe extends JFrame
         return stundenModel;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args)
     {
         new Mainframe();

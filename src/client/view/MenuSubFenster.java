@@ -9,24 +9,30 @@ import client.control.FaecherListeController;
 import client.control.KlassenListeController;
 import client.control.KuerzlController;
 import client.model.Model;
-import client.model.ModelListener;
+import client.model.IModelListener;
 
 /**
  *
- * @author Bruno Sobral
+ * @author sobdaro
  */
 @SuppressWarnings("serial")
 public class MenuSubFenster extends JDialog
-        implements ModelListener
+        implements IModelListener
 {
 
     private JComboBox<Object> krzlCombo;
     private JComboBox<Object> fachCombo;
     private JComboBox<Object> klasseCombo;
 
-    public MenuSubFenster(KuerzlController kuController,
-            KlassenListeController klaController,
-            FaecherListeController faController)
+    /**
+     *
+     * @param kuerzelController
+     * @param klassenController
+     * @param faecherController
+     */
+    public MenuSubFenster(KuerzlController kuerzelController,
+            KlassenListeController klassenController,
+            FaecherListeController faecherController)
     {
         setTitle("Konfiguration");
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -53,10 +59,10 @@ public class MenuSubFenster extends JDialog
 
             JTextField hinkuerzel = new JTextField(5);
             hinkuerzel.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-            hinkuerzel.addActionListener(kuController);
+            hinkuerzel.addActionListener(kuerzelController);
             krzlCombo = new JComboBox<>();
             krzlCombo.setBorder(BorderFactory.createRaisedBevelBorder());
-            krzlCombo.addActionListener(kuController);
+            krzlCombo.addActionListener(kuerzelController);
             krzlCombo.setPrototypeDisplayValue("-Liste-");
 
             hinzu.add(new JLabel("Kürzel:"));
@@ -76,10 +82,10 @@ public class MenuSubFenster extends JDialog
 
             JTextField klasse = new JTextField(5);
             klasse.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-            klasse.addActionListener(klaController);
+            klasse.addActionListener(klassenController);
             klasseCombo = new JComboBox<>();
             klasseCombo.setBorder(BorderFactory.createRaisedBevelBorder());
-            klasseCombo.addActionListener(klaController);
+            klasseCombo.addActionListener(klassenController);
             klasseCombo.setPrototypeDisplayValue("-Liste-");
 
             hinzu.add(new JLabel("Klasse:"));
@@ -99,10 +105,10 @@ public class MenuSubFenster extends JDialog
 
             JTextField hinkuerzel = new JTextField(5);
             hinkuerzel.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-            hinkuerzel.addActionListener(faController);
+            hinkuerzel.addActionListener(faecherController);
             fachCombo = new JComboBox<>();
             fachCombo.setBorder(BorderFactory.createRaisedBevelBorder());
-            fachCombo.addActionListener(faController);
+            fachCombo.addActionListener(faecherController);
             fachCombo.setPrototypeDisplayValue("-Liste-");
 
             hinzu.add(new JLabel("Fach:"));
@@ -131,6 +137,10 @@ public class MenuSubFenster extends JDialog
         setVisible(true);
     }
 
+    /**
+     *
+     * @param model
+     */
     @Override
     public void modelChanged(Model model)
     {
